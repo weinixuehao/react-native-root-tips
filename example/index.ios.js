@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 
 import Tips from 'react-native-root-tips';
-import Dialog from 'react-native-popup-dialog';
+import Dialog, {DialogContent} from 'react-native-popup-dialog';
 
 export default class RootTipsDemo extends Component {
 
@@ -52,7 +52,7 @@ export default class RootTipsDemo extends Component {
     // Tips.showSuccess('wow! success');
 
     // show a failed tips
-    // Tips.showFail('em...failed');
+    Tips.showFail('em...failed');
 
     // show a Info tips
     // Tips.showInfo('info tips');
@@ -107,7 +107,7 @@ export default class RootTipsDemo extends Component {
               this.setState({ visible: true });
             }}
           />
-          {/* <Dialog
+          <Dialog
             visible={this.state.visible}
             onTouchOutside={() => {
               this.setState({ visible: false });
@@ -122,7 +122,7 @@ export default class RootTipsDemo extends Component {
               <Text>No onTouchOutside handler. will not dismiss when touch overlay.</Text>
             </DialogContent>
 
-          </Dialog> */}
+          </Dialog>
         </View>
       </View>
     );
