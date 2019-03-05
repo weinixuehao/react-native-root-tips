@@ -15,14 +15,7 @@ import {
 } from 'react-native';
 
 import Tips from 'react-native-root-tips';
-// import Dialog, {
-//   DialogTitle,
-//   DialogContent,
-//   DialogFooter,
-//   DialogButton,
-//   SlideAnimation,
-//   ScaleAnimation,
-// } from 'react-native-popup-dialog';
+import Dialog from 'react-native-popup-dialog';
 
 export default class RootTipsDemo extends Component {
 

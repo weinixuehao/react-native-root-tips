@@ -4,8 +4,7 @@
   "description": "very simple and powerful way to show a toast in react-native",
   "main": "./index.js",
   "dependencies": {
-    "prop-types": "^15.5.10",
-    "react-native-root-siblings": "^3.1.7"
+    "prop-types": "^15.5.10"
   },
   "repository" :
   { "type" : "git"

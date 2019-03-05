@@ -1314,10 +1314,6 @@ var _reactNativeRootTips = require(491                     ); // 491 = react-nat
 
 var _reactNativeRootTips2 = _interopRequireDefault(_reactNativeRootTips);
 
-var _reactNativePopupDialog = require(502                        ); // 502 = react-native-popup-dialog
-
-var _reactNativePopupDialog2 = _interopRequireDefault(_reactNativePopupDialog);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1417,21 +1413,21 @@ var RootTipsDemo = _wrapComponent('RootTipsDemo')(function (_Component) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 106
+            lineNumber: 99
           }
         },
         _react3.default.createElement(
           _reactNative.View,
           { style: styles.container, __source: {
               fileName: _jsxFileName,
-              lineNumber: 107
+              lineNumber: 100
             }
           },
           _react3.default.createElement(
             _reactNative.Text,
             { style: styles.welcome, onPress: this._sampleSimple, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 108
+                lineNumber: 101
               }
             },
             'Simple Tips'
@@ -1443,7 +1439,7 @@ var RootTipsDemo = _wrapComponent('RootTipsDemo')(function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 111
+              lineNumber: 104
             }
           })
         )
@@ -53196,17 +53192,23 @@ var _index = require(29                                     ); // 29 = ./../reac
 
 var _index2 = _interopRequireDefault(_index);
 
-var _jsxFileName = '/Users/user/Ctsmed/react-native-root-tips/example/node_modules/react-native-root-siblings/index.js';
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class,
+    _temp,
+    _jsxFileName = '/Users/user/Ctsmed/react-native-root-tips/example/node_modules/react-native-root-siblings/index.js';
 
 var _reactNative = require(183           ); // 183 = react-native
 
 var _staticContainer = require(494               ); // 494 = static-container
 
 var _staticContainer2 = _interopRequireDefault(_staticContainer);
+
+var _propTypes = require(19          ); // 19 = prop-types
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53217,8 +53219,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _components = {
-  _component: {
-    isInFunction: true
+  Provider: {
+    displayName: 'Provider'
+  },
+  RootSiblings: {
+    displayName: 'RootSiblings'
   }
 };
 
@@ -53238,130 +53243,167 @@ function _wrapComponent(id) {
 var styles = _reactNative.StyleSheet.create({
   container: {
     flex: 1
-  },
-
-  offStream: {
-    position: 'absolute'
   }
+});
+
+var Provider = _wrapComponent('Provider')((_temp = _class = function (_Component) {
+  _inherits(Provider, _Component);
+
+  function Provider() {
+    _classCallCheck(this, Provider);
+
+    return _possibleConstructorReturn(this, (Provider.__proto__ || Object.getPrototypeOf(Provider)).apply(this, arguments));
+  }
+
+  _createClass(Provider, [{
+    key: 'getChildContext',
+    value: function getChildContext() {
+      return { store: this.props.store };
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return this.props.children;
+    }
+  }]);
+
+  return Provider;
+}(_react2.Component), _class.childContextTypes = {
+  store: _propTypes2.default.shape({
+    subscribe: _propTypes2.default.func.isRequired,
+    dispatch: _propTypes2.default.func.isRequired,
+    getState: _propTypes2.default.func.isRequired
+  })
+}, _temp));
+
+_reactNative.AppRegistry.setWrapperComponentProvider(function () {
+  return function RootSiblingsWrapper(props) {
+    return _react3.default.createElement(
+      _reactNative.View,
+      { style: styles.container, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 33
+        }
+      },
+      props.children,
+      _react3.default.createElement(RootSiblings, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        }
+      })
+    );
+  };
 });
 
 var uuid = 0;
 var triggers = [];
 
-_reactNative.AppRegistry.setWrapperComponentProvider(function () {
-  var _class, _temp;
+var RootSiblings = _wrapComponent('RootSiblings')(function (_Component2) {
+  _inherits(RootSiblings, _Component2);
 
-  return _wrapComponent('_component')((_temp = _class = function (_Component) {
-    _inherits(_class, _Component);
+  function RootSiblings(props) {
+    _classCallCheck(this, RootSiblings);
 
-    function _class(props) {
-      _classCallCheck(this, _class);
+    var _this2 = _possibleConstructorReturn(this, (RootSiblings.__proto__ || Object.getPrototypeOf(RootSiblings)).call(this, props));
 
-      var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+    _this2._updatedSiblings = {};
+    _this2._siblings = {};
+    _this2._stores = {};
 
-      _this._updatedSiblings = {};
-      _this._siblings = {};
+    _this2._update = function (id, element, callback, store) {
+      var siblings = _extends({}, _this2._siblings);
+      var stores = _extends({}, _this2._stores);
+      if (siblings[id] && !element) {
+        delete siblings[id];
+        delete stores[id];
+      } else if (element) {
+        siblings[id] = element;
+        stores[id] = store;
+      }
+      _this2._updatedSiblings[id] = true;
+      _this2._siblings = siblings;
+      _this2._stores = stores;
+      _this2.forceUpdate(callback);
+    };
 
-      _this._update = function (id, element, callback) {
-        var siblings = _extends({}, _this._siblings);
-        if (siblings[id] && !element) {
-          delete siblings[id];
-        } else if (element) {
-          siblings[id] = element;
-        }
+    _this2._siblings = {};
+    triggers.push(_this2._update);
+    return _this2;
+  }
 
-        _this._updatedSiblings[id] = true;
-        _this._siblings = siblings;
-        _this.forceUpdate(callback);
-      };
-
-      _this._siblings = {};
-      return _this;
+  _createClass(RootSiblings, [{
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      triggers.splice(triggers.indexOf(this._update), 1);
     }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
 
-    _createClass(_class, [{
-      key: 'componentWillMount',
-      value: function componentWillMount() {
-        triggers.push(this._update);
-      }
-    }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
-        triggers.splice(triggers.indexOf(this._update), 1);
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        var _this2 = this;
-
-        var siblings = this._siblings;
-        var elements = [];
-        Object.keys(siblings).forEach(function (key) {
-          var element = siblings[key];
-          element && elements.push(_react3.default.createElement(
+      var siblings = this._siblings;
+      var stores = this._stores;
+      var elements = [];
+      Object.keys(siblings).forEach(function (key) {
+        var element = siblings[key];
+        if (element) {
+          var sibling = _react3.default.createElement(
             _staticContainer2.default,
-            {
-              key: 'root-sibling-' + key,
-              shouldUpdate: !!_this2._updatedSiblings[key],
-              __source: {
+            { key: 'root-sibling-' + key, shouldUpdate: !!_this3._updatedSiblings[key], __source: {
                 fileName: _jsxFileName,
-                lineNumber: 57
+                lineNumber: 82
               }
             },
             element
-          ));
-        });
-        this._updatedSiblings = {};
+          );
 
-        return _react3.default.createElement(
-          _reactNative.View,
-          { style: styles.container, __source: {
-              fileName: _jsxFileName,
-              lineNumber: 68
-            }
-          },
-          _react3.default.createElement(
-            _staticContainer2.default,
-            { shouldUpdate: false, __source: {
-                fileName: _jsxFileName,
-                lineNumber: 69
-              }
-            },
-            this.props.children
-          ),
-          elements
-        );
-      }
-    }]);
+          var store = stores[key];
+          if (store) {
+            elements.push(_react3.default.createElement(
+              Provider,
+              { store: store, key: 'root-sibling-' + key + '-provider', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 90
+                }
+              },
+              sibling
+            ));
+          } else {
+            elements.push(sibling);
+          }
+        }
+      });
+      this._updatedSiblings = {};
+      return elements;
+    }
+  }]);
 
-    return _class;
-  }(_react2.Component), _class.displayName = 'RootSiblingsWrapper', _temp));
-});
+  return RootSiblings;
+}(_react2.Component));
 
-var _class2 = function _class2(element, callback) {
-  _classCallCheck(this, _class2);
+var RootSiblingManager = function RootSiblingManager(element, callback, store) {
+  _classCallCheck(this, RootSiblingManager);
 
   var id = uuid++;
-  function update(element, callback) {
+  function update(element, callback, store) {
     triggers.forEach(function (trigger) {
-      trigger(id, (0, _react2.cloneElement)(element, {
-        style: [element.props.style, styles.offStream]
-      }), callback);
+      trigger(id, element, callback, store);
     });
-  };
+  }
 
   function destroy(callback) {
     triggers.forEach(function (trigger) {
       trigger(id, null, callback);
     });
-  };
+  }
 
-  update(element, callback);
+  update(element, callback, store);
   this.update = update;
   this.destroy = destroy;
 };
 
-exports.default = _class2;
+exports.default = RootSiblingManager;
 }, 493, null, "react-native-root-siblings/index.js");
 __d(/* static-container/StaticContainer.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
@@ -53863,642 +53905,6 @@ __d(/* react-native-root-tips/src/info.png */function(global, require, module, e
 }, 499, null, "react-native-root-tips/src/info.png");
 __d(/* react-native-root-tips/src/warn.png */function(global, require, module, exports) {module.exports=require(327                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/node_modules/react-native-root-tips/src","width":128,"height":128,"scales":[1],"hash":"f96d640329102d5cd9cbc33daa0d7662","name":"warn","type":"png"}); // 327 = react-native/Libraries/Image/AssetRegistry
 }, 500, null, "react-native-root-tips/src/warn.png");
-__d(/* react-native-popup-dialog/dist/index.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", { value: true });exports.OverlayProps = exports.DialogContentProps = exports.DialogTitleProps = exports.DialogButtonProps = exports.DialogFooterActionList = exports.DialogFooterProps = exports.DialogProps = exports.SlideAnimation = exports.ScaleAnimation = exports.FadeAnimation = exports.Animation = exports.DialogFooter = exports.DialogTitle = exports.DialogContent = exports.DialogButton = exports.Overlay = exports.Dialog = undefined;var _type = require(503     );var _PopupDialog = require(506            );var _PopupDialog2 = _interopRequireDefault(_PopupDialog);var _Overlay = require(509                   );var _Overlay2 = _interopRequireDefault(_Overlay);var _DialogTitle = require(514                       );var _DialogTitle2 = _interopRequireDefault(_DialogTitle);var _DialogFooter = require(515                        );var _DialogFooter2 = _interopRequireDefault(_DialogFooter);var _DialogButton = require(504                        );var _DialogButton2 = _interopRequireDefault(_DialogButton);var _DialogContent = require(516                         );var _DialogContent2 = _interopRequireDefault(_DialogContent);var _Dialog = require(508                  );var _Dialog2 = _interopRequireDefault(_Dialog);var _Animation = require(511                     );var _Animation2 = _interopRequireDefault(_Animation);var _FadeAnimation = require(510                         );var _FadeAnimation2 = _interopRequireDefault(_FadeAnimation);var _ScaleAnimation = require(512                          );var _ScaleAnimation2 = _interopRequireDefault(_ScaleAnimation);var _SlideAnimation = require(513                          );var _SlideAnimation2 = _interopRequireDefault(_SlideAnimation);function _interopRequireDefault(obj) { // 513 = ./animations/SlideAnimation // 512 = ./animations/ScaleAnimation // 510 = ./animations/FadeAnimation // 511 = ./animations/Animation // 508 = ./components/Dialog // 516 = ./components/DialogContent // 504 = ./components/DialogButton // 515 = ./components/DialogFooter // 514 = ./components/DialogTitle // 509 = ./components/Overlay // 506 = ./PopupDialog // 503 = ./type
-  return obj && obj.__esModule ? obj : { default: obj };
-}exports.Dialog = _Dialog2.default;exports.Overlay = _Overlay2.default;exports.DialogButton = _DialogButton2.default;exports.DialogContent = _DialogContent2.default;exports.DialogTitle = _DialogTitle2.default;exports.DialogFooter = _DialogFooter2.default;exports.Animation = _Animation2.default;exports.FadeAnimation = _FadeAnimation2.default;exports.ScaleAnimation = _ScaleAnimation2.default;exports.SlideAnimation = _SlideAnimation2.default;exports.DialogProps = _type.DialogProps;exports.DialogFooterProps = _type.DialogFooterProps;exports.DialogFooterActionList = _type.DialogFooterActionList;exports.DialogButtonProps = _type.DialogButtonProps;exports.DialogTitleProps = _type.DialogTitleProps;exports.DialogContentProps = _type.DialogContentProps;exports.OverlayProps = _type.OverlayProps;exports.default = _PopupDialog2.default;
-}, 502, null, "react-native-popup-dialog/dist/index.js");
-__d(/* react-native-popup-dialog/dist/type.js */function(global, require, module, exports) {require(12     );var _DialogButton = require(504                        );var _DialogButton2 = _interopRequireDefault(_DialogButton);function _interopRequireDefault(obj) { // 504 = ./components/DialogButton // 12 = react
-  return obj && obj.__esModule ? obj : { default: obj };
-}var babelPluginFlowReactPropTypes_proptype_DialogProps = { visible: require(19          ).bool.isRequired, children: function children(props, propName, componentName) { // 19 = prop-types
-    if (!Object.prototype.hasOwnProperty.call(props, propName)) {
-      throw new Error('Prop `' + propName + '` has type \'any\' or \'mixed\', but was not provided to `' + componentName + '`. Pass undefined or any other value.');
-    }
-  }, width: require(19          ).number, height: require(19          ).number, rounded: require(19          ).bool, hasOverlay: require(19          ).bool, overlayPointerEvents: require(19          ).oneOf(['auto', 'none']), overlayBackgroundColor: require(19          ).string, overlayOpacity: require(19          ).number, dialogTitle: typeof Element === 'function' ? require(19          ).instanceOf(Element) : require(19          ).any, dialogAnimation: require(19          ).object, dialogStyle: require(19          ).any, containerStyle: require(19          ).any, animationDuration: require(19          ).number, onTouchOutside: require(19          ).func, onHardwareBackPress: require(19          ).func, onShow: require(19          ).func, onDismiss: require(19          ).func, footer: typeof Node === 'function' ? require(19          ).instanceOf(Node) : require(19          ).any, useNativeDriver: require(19          ).bool };if (typeof exports !== 'undefined') Object.defineProperty(exports, 'babelPluginFlowReactPropTypes_proptype_DialogProps', { value: babelPluginFlowReactPropTypes_proptype_DialogProps, configurable: true, enumerable: true });var babelPluginFlowReactPropTypes_proptype_DialogFooterActionList = require(19          ).arrayOf(typeof Element === 'function' ? require(19          ).instanceOf(Element) : require(19          ).any);if (typeof exports !== 'undefined') Object.defineProperty(exports, 'babelPluginFlowReactPropTypes_proptype_DialogFooterActionList', { value: babelPluginFlowReactPropTypes_proptype_DialogFooterActionList, configurable: true, enumerable: true });var babelPluginFlowReactPropTypes_proptype_DialogFooterProps = { children: require(19          ).arrayOf(typeof Element === 'function' ? require(19          ).instanceOf(Element) : require(19          ).any).isRequired, style: require(19          ).any, bordered: require(19          ).bool };if (typeof exports !== 'undefined') Object.defineProperty(exports, 'babelPluginFlowReactPropTypes_proptype_DialogFooterProps', { value: babelPluginFlowReactPropTypes_proptype_DialogFooterProps, configurable: true, enumerable: true });var babelPluginFlowReactPropTypes_proptype_DialogButtonProps = { text: require(19          ).string.isRequired, onPress: require(19          ).func.isRequired, align: require(19          ).string, style: require(19          ).any, textStyle: require(19          ).any, disabled: require(19          ).bool, activeOpacity: require(19          ).number, bordered: require(19          ).bool };if (typeof exports !== 'undefined') Object.defineProperty(exports, 'babelPluginFlowReactPropTypes_proptype_DialogButtonProps', { value: babelPluginFlowReactPropTypes_proptype_DialogButtonProps, configurable: true, enumerable: true });var babelPluginFlowReactPropTypes_proptype_DialogTitleProps = { title: function title(props, propName, componentName) { // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types
-    if (!Object.prototype.hasOwnProperty.call(props, propName)) {
-      throw new Error('Prop `' + propName + '` has type \'any\' or \'mixed\', but was not provided to `' + componentName + '`. Pass undefined or any other value.');
-    }
-  }, style: require(19          ).any, textStyle: require(19          ).any, align: require(19          ).string, hasTitleBar: require(19          ).bool };if (typeof exports !== 'undefined') Object.defineProperty(exports, 'babelPluginFlowReactPropTypes_proptype_DialogTitleProps', { value: babelPluginFlowReactPropTypes_proptype_DialogTitleProps, configurable: true, enumerable: true });var babelPluginFlowReactPropTypes_proptype_DialogContentProps = { children: function children(props, propName, componentName) { // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types
-    if (!Object.prototype.hasOwnProperty.call(props, propName)) {
-      throw new Error('Prop `' + propName + '` has type \'any\' or \'mixed\', but was not provided to `' + componentName + '`. Pass undefined or any other value.');
-    }
-  }, style: require(19          ).any };if (typeof exports !== 'undefined') Object.defineProperty(exports, 'babelPluginFlowReactPropTypes_proptype_DialogContentProps', { value: babelPluginFlowReactPropTypes_proptype_DialogContentProps, configurable: true, enumerable: true });var babelPluginFlowReactPropTypes_proptype_OverlayProps = { visible: require(19          ).bool.isRequired, opacity: require(19          ).number.isRequired, onPress: require(19          ).func, backgroundColor: require(19          ).string, animationDuration: require(19          ).number, pointerEvents: require(19          ).string, useNativeDriver: require(19          ).bool };if (typeof exports !== 'undefined') Object.defineProperty(exports, 'babelPluginFlowReactPropTypes_proptype_OverlayProps', { value: babelPluginFlowReactPropTypes_proptype_OverlayProps, configurable: true, enumerable: true }); // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types // 19 = prop-types
-}, 503, null, "react-native-popup-dialog/dist/type.js");
-__d(/* react-native-popup-dialog/dist/components/DialogButton.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", { value: true });var _jsxFileName = 'src/components/DialogButton.js';var _react = require(12     );var _react2 = _interopRequireDefault(_react);var _reactNative = require(183           );var _Constants = require(505                     );function _interopRequireDefault(obj) { // 505 = ../constants/Constants // 183 = react-native // 12 = react
-  return obj && obj.__esModule ? obj : { default: obj };
-}var babelPluginFlowReactPropTypes_proptype_DialogButtonProps = require(503      ).babelPluginFlowReactPropTypes_proptype_DialogButtonProps || require(19          ).any;var isAndroid = _reactNative.Platform.OS === 'android';var styles = _reactNative.StyleSheet.create({ button: { flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center', paddingTop: 16, paddingBottom: 16 }, border: { borderLeftColor: '#CCD0D5', borderLeftWidth: 1 / _reactNative.PixelRatio.get() }, text: { fontWeight: isAndroid ? '400' : '500', fontFamily: isAndroid ? 'sans-serif-medium' : 'System', fontSize: isAndroid ? 19 : 16, color: '#044DE0' }, disable: { color: '#C5C6C5' } });function DialogButton(_ref) { // 19 = prop-types // 503 = ../type
-  var text = _ref.text,
-      activeOpacity = _ref.activeOpacity,
-      align = _ref.align,
-      onPress = _ref.onPress,
-      style = _ref.style,
-      textStyle = _ref.textStyle,
-      disabled = _ref.disabled,
-      bordered = _ref.bordered;var buttonAlign = { alignSelf: _Constants.Positions[align] };var disable = disabled ? styles.disable : null;var border = bordered ? styles.border : null;return _react2.default.createElement(_reactNative.TouchableHighlight, { underlayColor: '#F1F2F2', onPress: onPress, disabled: disabled, activeOpacity: activeOpacity, style: [styles.button, buttonAlign, border, style], __source: { fileName: _jsxFileName, lineNumber: 49 } }, _react2.default.createElement(_reactNative.Text, { style: [styles.text, disable, textStyle], __source: { fileName: _jsxFileName, lineNumber: 56 } }, text));
-}DialogButton.propTypes = babelPluginFlowReactPropTypes_proptype_DialogButtonProps === require(19          ).any ? {} : babelPluginFlowReactPropTypes_proptype_DialogButtonProps;DialogButton.defaultProps = { activeOpacity: 0.6, disabled: false, bordered: false, align: 'center', style: null, textStyle: null };exports.default = DialogButton; // 19 = prop-types
-}, 504, null, "react-native-popup-dialog/dist/components/DialogButton.js");
-__d(/* react-native-popup-dialog/dist/constants/Constants.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", { value: true });var Positions = exports.Positions = { left: 'flex-start', right: 'flex-end', center: 'center' };
-}, 505, null, "react-native-popup-dialog/dist/constants/Constants.js");
-__d(/* react-native-popup-dialog/dist/PopupDialog.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", { value: true });var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }return target;
-};var _jsxFileName = 'src/PopupDialog.js';var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-}();var _react = require(12     );var _react2 = _interopRequireDefault(_react);var _reactNativeRootSiblings = require(507                         );var _reactNativeRootSiblings2 = _interopRequireDefault(_reactNativeRootSiblings);var _Dialog = require(508                  );var _Dialog2 = _interopRequireDefault(_Dialog);function _interopRequireDefault(obj) { // 508 = ./components/Dialog // 507 = react-native-root-siblings // 12 = react
-  return obj && obj.__esModule ? obj : { default: obj };
-}function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
-}function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}var babelPluginFlowReactPropTypes_proptype_DialogProps = require(503     ).babelPluginFlowReactPropTypes_proptype_DialogProps || require(19          ).any;var PopupDialog = function (_Component) { // 19 = prop-types // 503 = ./type
-  _inherits(PopupDialog, _Component);function PopupDialog(props) {
-    _classCallCheck(this, PopupDialog);var _this = _possibleConstructorReturn(this, (PopupDialog.__proto__ || Object.getPrototypeOf(PopupDialog)).call(this, props));_this.handleDismiss = function () {
-      var onDismiss = _this.props.onDismiss;if (onDismiss) {
-        onDismiss();
-      }_this.destroyDialog();
-    };_this.sibling = null;_this.state = { visible: props.visible };return _this;
-  }_createClass(PopupDialog, [{ key: 'componentDidMount', value: function componentDidMount() {
-      var visible = this.state.visible;if (visible) {
-        this.createDialog();
-      }
-    } }, { key: 'componentDidUpdate', value: function componentDidUpdate(prevProps, prevState) {
-      if (prevState.visible !== this.props.visible) {
-        this.setState({ visible: this.props.visible });if (this.props.visible) {
-          this.createDialog();
-        }
-      }if (this.sibling) {
-        this.updateDialog();
-      }
-    } }, { key: 'createDialog', value: function createDialog() {
-      if (!this.sibling) {
-        this.sibling = new _reactNativeRootSiblings2.default(this.renderDialog());
-      }
-    } }, { key: 'updateDialog', value: function updateDialog() {
-      this.sibling.update(this.renderDialog());
-    } }, { key: 'destroyDialog', value: function destroyDialog() {
-      this.sibling.destroy();this.sibling = null;
-    } }, { key: 'renderDialog', value: function renderDialog() {
-      return _react2.default.createElement(_Dialog2.default, _extends({}, this.props, { onDismiss: this.handleDismiss, visible: this.state.visible, __source: { fileName: _jsxFileName, lineNumber: 73 } }));
-    } }, { key: 'render', value: function render() {
-      return null;
-    } }]);return PopupDialog;
-}(_react.Component);PopupDialog.propTypes = babelPluginFlowReactPropTypes_proptype_DialogProps;exports.default = PopupDialog;
-}, 506, null, "react-native-popup-dialog/dist/PopupDialog.js");
-__d(/* react-native-root-siblings/index.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react2 = require(12     ); // 12 = react
-
-var _react3 = _interopRequireDefault(_react2);
-
-var _index = require(29                                           ); // 29 = ./../../../react-transform-hmr/lib/index.js
-
-var _index2 = _interopRequireDefault(_index);
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _class,
-    _temp,
-    _jsxFileName = '/Users/user/Ctsmed/react-native-root-tips/example/node_modules/react-native-popup-dialog/node_modules/react-native-root-siblings/index.js';
-
-var _reactNative = require(183           ); // 183 = react-native
-
-var _staticContainer = require(494               ); // 494 = static-container
-
-var _staticContainer2 = _interopRequireDefault(_staticContainer);
-
-var _propTypes = require(19          ); // 19 = prop-types
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _components = {
-  Provider: {
-    displayName: 'Provider'
-  },
-  RootSiblings: {
-    displayName: 'RootSiblings'
-  }
-};
-
-var _reactTransformHmrLibIndexJs2 = (0, _index2.default)({
-  filename: '/Users/user/Ctsmed/react-native-root-tips/example/node_modules/react-native-popup-dialog/node_modules/react-native-root-siblings/index.js',
-  components: _components,
-  locals: [module],
-  imports: [_react3.default]
-});
-
-function _wrapComponent(id) {
-  return function (Component) {
-    return _reactTransformHmrLibIndexJs2(Component, id);
-  };
-}
-
-var styles = _reactNative.StyleSheet.create({
-  container: {
-    flex: 1
-  }
-});
-
-var Provider = _wrapComponent('Provider')((_temp = _class = function (_Component) {
-  _inherits(Provider, _Component);
-
-  function Provider() {
-    _classCallCheck(this, Provider);
-
-    return _possibleConstructorReturn(this, (Provider.__proto__ || Object.getPrototypeOf(Provider)).apply(this, arguments));
-  }
-
-  _createClass(Provider, [{
-    key: 'getChildContext',
-    value: function getChildContext() {
-      return { store: this.props.store };
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return this.props.children;
-    }
-  }]);
-
-  return Provider;
-}(_react2.Component), _class.childContextTypes = {
-  store: _propTypes2.default.shape({
-    subscribe: _propTypes2.default.func.isRequired,
-    dispatch: _propTypes2.default.func.isRequired,
-    getState: _propTypes2.default.func.isRequired
-  })
-}, _temp));
-
-_reactNative.AppRegistry.setWrapperComponentProvider(function () {
-  return function RootSiblingsWrapper(props) {
-    return _react3.default.createElement(
-      _reactNative.View,
-      { style: styles.container, __source: {
-          fileName: _jsxFileName,
-          lineNumber: 33
-        }
-      },
-      props.children,
-      _react3.default.createElement(RootSiblings, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 35
-        }
-      })
-    );
-  };
-});
-
-var uuid = 0;
-var triggers = [];
-
-var RootSiblings = _wrapComponent('RootSiblings')(function (_Component2) {
-  _inherits(RootSiblings, _Component2);
-
-  function RootSiblings(props) {
-    _classCallCheck(this, RootSiblings);
-
-    var _this2 = _possibleConstructorReturn(this, (RootSiblings.__proto__ || Object.getPrototypeOf(RootSiblings)).call(this, props));
-
-    _this2._updatedSiblings = {};
-    _this2._siblings = {};
-    _this2._stores = {};
-
-    _this2._update = function (id, element, callback, store) {
-      var siblings = _extends({}, _this2._siblings);
-      var stores = _extends({}, _this2._stores);
-      if (siblings[id] && !element) {
-        delete siblings[id];
-        delete stores[id];
-      } else if (element) {
-        siblings[id] = element;
-        stores[id] = store;
-      }
-      _this2._updatedSiblings[id] = true;
-      _this2._siblings = siblings;
-      _this2._stores = stores;
-      _this2.forceUpdate(callback);
-    };
-
-    _this2._siblings = {};
-    triggers.push(_this2._update);
-    return _this2;
-  }
-
-  _createClass(RootSiblings, [{
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      triggers.splice(triggers.indexOf(this._update), 1);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this3 = this;
-
-      var siblings = this._siblings;
-      var stores = this._stores;
-      var elements = [];
-      Object.keys(siblings).forEach(function (key) {
-        var element = siblings[key];
-        if (element) {
-          var sibling = _react3.default.createElement(
-            _staticContainer2.default,
-            { key: 'root-sibling-' + key, shouldUpdate: !!_this3._updatedSiblings[key], __source: {
-                fileName: _jsxFileName,
-                lineNumber: 82
-              }
-            },
-            element
-          );
-
-          var store = stores[key];
-          if (store) {
-            elements.push(_react3.default.createElement(
-              Provider,
-              { store: store, key: 'root-sibling-' + key + '-provider', __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 90
-                }
-              },
-              sibling
-            ));
-          } else {
-            elements.push(sibling);
-          }
-        }
-      });
-      this._updatedSiblings = {};
-      return elements;
-    }
-  }]);
-
-  return RootSiblings;
-}(_react2.Component));
-
-var RootSiblingManager = function RootSiblingManager(element, callback, store) {
-  _classCallCheck(this, RootSiblingManager);
-
-  var id = uuid++;
-  function update(element, callback, store) {
-    triggers.forEach(function (trigger) {
-      trigger(id, element, callback, store);
-    });
-  }
-
-  function destroy(callback) {
-    triggers.forEach(function (trigger) {
-      trigger(id, null, callback);
-    });
-  }
-
-  update(element, callback, store);
-  this.update = update;
-  this.destroy = destroy;
-};
-
-exports.default = RootSiblingManager;
-}, 507, null, "react-native-root-siblings/index.js");
-__d(/* react-native-popup-dialog/dist/components/Dialog.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", { value: true });var _jsxFileName = 'src/components/Dialog.js';var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-}();var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }return target;
-};var _react = require(12     );var _react2 = _interopRequireDefault(_react);var _reactNative = require(183           );var _Overlay = require(509        );var _Overlay2 = _interopRequireDefault(_Overlay);var _FadeAnimation = require(510                          );var _FadeAnimation2 = _interopRequireDefault(_FadeAnimation);var _ScaleAnimation = require(512                           );var _ScaleAnimation2 = _interopRequireDefault(_ScaleAnimation);var _SlideAnimation = require(513                           );var _SlideAnimation2 = _interopRequireDefault(_SlideAnimation);function _interopRequireDefault(obj) { // 513 = ../animations/SlideAnimation // 512 = ../animations/ScaleAnimation // 510 = ../animations/FadeAnimation // 509 = ./Overlay // 183 = react-native // 12 = react
-  return obj && obj.__esModule ? obj : { default: obj };
-}function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
-}function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}var babelPluginFlowReactPropTypes_proptype_DialogProps = require(503      ).babelPluginFlowReactPropTypes_proptype_DialogProps || require(19          ).any;var BackHandler = _reactNative.BackHandler || _reactNative.BackAndroid;var DIALOG_OPENING = 'opening';var DIALOG_OPENED = 'opened';var DIALOG_CLOSING = 'closing';var DIALOG_CLOSED = 'closed';var DEFAULT_ANIMATION_DURATION = 150;var HARDWARE_BACK_PRESS_EVENT = 'hardwareBackPress';var styles = _reactNative.StyleSheet.create({ container: _extends({}, _reactNative.StyleSheet.absoluteFillObject, { justifyContent: 'center', alignItems: 'center', zIndex: 1000 }), dialog: { overflow: 'hidden', backgroundColor: '#ffffff' }, hidden: { top: -10000, left: 0, height: 0, width: 0 }, round: { borderRadius: 8 } });var Dialog = function (_Component) { // 19 = prop-types // 503 = ../type
-  _inherits(Dialog, _Component);function Dialog(props) {
-    _classCallCheck(this, Dialog);var _this = _possibleConstructorReturn(this, (Dialog.__proto__ || Object.getPrototypeOf(Dialog)).call(this, props));_this.show = function () {
-      var onShow = _this.props.onShow;if (![DIALOG_OPENING, DIALOG_OPENED].includes(_this.state.dialogState)) {
-        _this.setDialogState(1, onShow);
-      }
-    };_this.dismiss = function () {
-      var onDismiss = _this.props.onDismiss;if (![DIALOG_CLOSING, DIALOG_CLOSED].includes(_this.state.dialogState)) {
-        _this.setDialogState(0, onDismiss);
-      }
-    };_this.state = { dialogAnimation: props.dialogAnimation || new _FadeAnimation2.default({ animationDuration: props.animationDuration }), dialogState: DIALOG_CLOSED };return _this;
-  }_createClass(Dialog, [{ key: 'componentDidMount', value: function componentDidMount() {
-      var _props = this.props,
-          visible = _props.visible,
-          onHardwareBackPress = _props.onHardwareBackPress;if (visible) {
-        this.show();
-      }BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT, onHardwareBackPress);
-    } }, { key: 'componentDidUpdate', value: function componentDidUpdate(prevProps) {
-      if (this.props.visible !== prevProps.visible) {
-        if (this.props.visible) {
-          this.show();return;
-        }this.dismiss();
-      }
-    } }, { key: 'componentWillUnmount', value: function componentWillUnmount() {
-      var onHardwareBackPress = this.props.onHardwareBackPress;BackHandler.removeEventListener(HARDWARE_BACK_PRESS_EVENT, onHardwareBackPress);
-    } }, { key: 'setDialogState', value: function setDialogState(toValue) {
-      var _this2 = this;var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};var dialogAnimation = this.state.dialogAnimation;var animationDuration = this.props.animationDuration;var dialogState = toValue ? DIALOG_OPENING : DIALOG_CLOSING;dialogAnimation.toValue(toValue);this.setState({ dialogState: dialogState });setTimeout(function () {
-        dialogState = dialogState === DIALOG_CLOSING ? DIALOG_CLOSED : DIALOG_OPENED;_this2.setState({ dialogState: dialogState }, callback);
-      }, animationDuration);
-    } }, { key: 'render', value: function render() {
-      var _state = this.state,
-          dialogState = _state.dialogState,
-          dialogAnimation = _state.dialogAnimation;var _props2 = this.props,
-          rounded = _props2.rounded,
-          dialogTitle = _props2.dialogTitle,
-          children = _props2.children,
-          onTouchOutside = _props2.onTouchOutside,
-          hasOverlay = _props2.hasOverlay,
-          dialogStyle = _props2.dialogStyle,
-          animationDuration = _props2.animationDuration,
-          overlayOpacity = _props2.overlayOpacity,
-          useNativeDriver = _props2.useNativeDriver,
-          overlayBackgroundColor = _props2.overlayBackgroundColor,
-          containerStyle = _props2.containerStyle,
-          footer = _props2.footer;var overlayVisible = hasOverlay && [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState);var round = rounded ? styles.round : null;var hidden = dialogState === DIALOG_CLOSED && styles.hidden;return _react2.default.createElement(_reactNative.View, { style: [styles.container, hidden, containerStyle], __source: { fileName: _jsxFileName, lineNumber: 191 } }, _react2.default.createElement(_Overlay2.default, { pointerEvents: this.pointerEvents, visible: overlayVisible, onPress: onTouchOutside, backgroundColor: overlayBackgroundColor, opacity: overlayOpacity, animationDuration: animationDuration, useNativeDriver: useNativeDriver, __source: { fileName: _jsxFileName, lineNumber: 192 } }), _react2.default.createElement(_reactNative.Animated.View, { style: [styles.dialog, round, this.dialogSize, dialogStyle, dialogAnimation.animations], __source: { fileName: _jsxFileName, lineNumber: 201 } }, dialogTitle, children, footer));
-    } }, { key: 'pointerEvents', get: function get() {
-      var overlayPointerEvents = this.props.overlayPointerEvents;var dialogState = this.state.dialogState;if (overlayPointerEvents) {
-        return overlayPointerEvents;
-      }return dialogState === DIALOG_OPENED ? 'auto' : 'none';
-    } }, { key: 'dialogSize', get: function get() {
-      var _Dimensions$get = _reactNative.Dimensions.get('window'),
-          screenWidth = _Dimensions$get.width,
-          screenHeight = _Dimensions$get.height;var _props3 = this.props,
-          width = _props3.width,
-          height = _props3.height;if (width && width > 0.0 && width <= 1.0) {
-        width *= screenWidth;
-      }if (height && height > 0.0 && height <= 1.0) {
-        height *= screenHeight;
-      }return { width: width, height: height };
-    } }]);return Dialog;
-}(_react.Component);Dialog.defaultProps = { rounded: true, dialogTitle: null, visible: false, containerStyle: null, animationDuration: DEFAULT_ANIMATION_DURATION, dialogStyle: null, width: null, height: null, onTouchOutside: function onTouchOutside() {}, onHardwareBackPress: function onHardwareBackPress() {
-    return true;
-  }, hasOverlay: true, overlayOpacity: 0.5, overlayPointerEvents: null, overlayBackgroundColor: '#000', onShow: function onShow() {}, onDismiss: function onDismiss() {}, footer: null, useNativeDriver: true };Dialog.propTypes = babelPluginFlowReactPropTypes_proptype_DialogProps;exports.default = Dialog;
-}, 508, null, "react-native-popup-dialog/dist/components/Dialog.js");
-__d(/* react-native-popup-dialog/dist/components/Overlay.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", { value: true });var _jsxFileName = 'src/components/Overlay.js';var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-}();var _react = require(12     );var _react2 = _interopRequireDefault(_react);var _reactNative = require(183           );function _interopRequireDefault(obj) { // 183 = react-native // 12 = react
-  return obj && obj.__esModule ? obj : { default: obj };
-}function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
-}function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}var babelPluginFlowReactPropTypes_proptype_OverlayProps = require(503      ).babelPluginFlowReactPropTypes_proptype_OverlayProps || require(19          ).any;var Overlay = function (_Component) { // 19 = prop-types // 503 = ../type
-  _inherits(Overlay, _Component);function Overlay() {
-    var _ref;var _temp, _this, _ret;_classCallCheck(this, Overlay);for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Overlay.__proto__ || Object.getPrototypeOf(Overlay)).call.apply(_ref, [this].concat(args))), _this), _this.opacity = new _reactNative.Animated.Value(0), _temp), _possibleConstructorReturn(_this, _ret);
-  }_createClass(Overlay, [{ key: 'componentWillReceiveProps', value: function componentWillReceiveProps(nextProps) {
-      var _props = this.props,
-          visible = _props.visible,
-          useNativeDriver = _props.useNativeDriver,
-          duration = _props.animationDuration;if (visible !== nextProps.visible) {
-        var toValue = nextProps.visible ? nextProps.opacity : 0;_reactNative.Animated.timing(this.opacity, { toValue: toValue, duration: duration, useNativeDriver: useNativeDriver }).start();
-      }
-    } }, { key: 'render', value: function render() {
-      var _props2 = this.props,
-          onPress = _props2.onPress,
-          pointerEvents = _props2.pointerEvents,
-          backgroundColor = _props2.backgroundColor;var opacity = this.opacity;return _react2.default.createElement(_reactNative.Animated.View, { pointerEvents: pointerEvents, style: [_reactNative.StyleSheet.absoluteFill, { backgroundColor: backgroundColor, opacity: opacity }], __source: { fileName: _jsxFileName, lineNumber: 36 } }, _react2.default.createElement(_reactNative.TouchableOpacity, { onPress: onPress, style: _reactNative.StyleSheet.absoluteFill, __source: { fileName: _jsxFileName, lineNumber: 46 } }));
-    } }]);return Overlay;
-}(_react.Component);Overlay.defaultProps = { backgroundColor: '#000', opacity: 0.5, animationDuration: 2000, visible: false, useNativeDriver: true, onPress: function onPress() {} };Overlay.propTypes = babelPluginFlowReactPropTypes_proptype_OverlayProps;exports.default = Overlay;
-}, 509, null, "react-native-popup-dialog/dist/components/Overlay.js");
-__d(/* react-native-popup-dialog/dist/animations/FadeAnimation.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", { value: true });var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-}();var _reactNative = require(183           );var _Animation2 = require(511          );var _Animation3 = _interopRequireDefault(_Animation2);function _interopRequireDefault(obj) { // 511 = ./Animation // 183 = react-native
-  return obj && obj.__esModule ? obj : { default: obj };
-}function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
-}function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}var FadeAnimation = function (_Animation) {
-  _inherits(FadeAnimation, _Animation);function FadeAnimation() {
-    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        _ref$toValue = _ref.toValue,
-        toValue = _ref$toValue === undefined ? 0 : _ref$toValue,
-        _ref$animationDuratio = _ref.animationDuration,
-        animationDuration = _ref$animationDuratio === undefined ? 200 : _ref$animationDuratio,
-        _ref$useNativeDriver = _ref.useNativeDriver,
-        useNativeDriver = _ref$useNativeDriver === undefined ? true : _ref$useNativeDriver;_classCallCheck(this, FadeAnimation);var _this = _possibleConstructorReturn(this, (FadeAnimation.__proto__ || Object.getPrototypeOf(FadeAnimation)).call(this, { toValue: toValue, useNativeDriver: useNativeDriver }));_this.animationDuration = animationDuration;return _this;
-  }_createClass(FadeAnimation, [{ key: 'toValue', value: function toValue(_toValue) {
-      var onFinished = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};_reactNative.Animated.timing(this.animate, { toValue: _toValue, duration: this.animationDuration, useNativeDriver: this.useNativeDriver }).start(onFinished);
-    } }, { key: 'createAnimations', value: function createAnimations() {
-      return { opacity: this.animate };
-    } }]);return FadeAnimation;
-}(_Animation3.default);exports.default = FadeAnimation;
-}, 510, null, "react-native-popup-dialog/dist/animations/FadeAnimation.js");
-__d(/* react-native-popup-dialog/dist/animations/Animation.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", { value: true });var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-}();var _reactNative = require(183           );function _classCallCheck(instance, Constructor) { // 183 = react-native
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}var Animation = function () {
-  function Animation() {
-    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        _ref$toValue = _ref.toValue,
-        toValue = _ref$toValue === undefined ? 0 : _ref$toValue,
-        _ref$useNativeDriver = _ref.useNativeDriver,
-        useNativeDriver = _ref$useNativeDriver === undefined ? true : _ref$useNativeDriver;_classCallCheck(this, Animation);this.useNativeDriver = useNativeDriver;this.animate = new _reactNative.Animated.Value(toValue);this.animations = this.createAnimations();
-  }_createClass(Animation, [{ key: 'toValue', value: function toValue() {
-      throw Error('not implemented yet');
-    } }, { key: 'createAnimations', value: function createAnimations() {
-      throw Error('not implemented yet');
-    } }]);return Animation;
-}();exports.default = Animation;
-}, 511, null, "react-native-popup-dialog/dist/animations/Animation.js");
-__d(/* react-native-popup-dialog/dist/animations/ScaleAnimation.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", { value: true });var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-}();var _reactNative = require(183           );var _Animation2 = require(511          );var _Animation3 = _interopRequireDefault(_Animation2);function _interopRequireDefault(obj) { // 511 = ./Animation // 183 = react-native
-  return obj && obj.__esModule ? obj : { default: obj };
-}function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
-}function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}var ScaleAnimation = function (_Animation) {
-  _inherits(ScaleAnimation, _Animation);function ScaleAnimation() {
-    _classCallCheck(this, ScaleAnimation);return _possibleConstructorReturn(this, (ScaleAnimation.__proto__ || Object.getPrototypeOf(ScaleAnimation)).apply(this, arguments));
-  }_createClass(ScaleAnimation, [{ key: 'toValue', value: function toValue(_toValue) {
-      var onFinished = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};switch (_toValue) {case 0:
-          _reactNative.Animated.spring(this.animate, { toValue: _toValue, velocity: 0, tension: 65, friction: 7, useNativeDriver: this.useNativeDriver }).start(onFinished);break;case 1:
-          _reactNative.Animated.spring(this.animate, { toValue: _toValue, velocity: 0, tension: 65, friction: 7, useNativeDriver: this.useNativeDriver }).start(onFinished);break;default:
-          break;}
-    } }, { key: 'createAnimations', value: function createAnimations() {
-      var transform = [{ scale: this.animate.interpolate({ inputRange: [0, 1], outputRange: [0, 1] }) }];var animations = { transform: transform };return animations;
-    } }]);return ScaleAnimation;
-}(_Animation3.default);exports.default = ScaleAnimation;
-}, 512, null, "react-native-popup-dialog/dist/animations/ScaleAnimation.js");
-__d(/* react-native-popup-dialog/dist/animations/SlideAnimation.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", { value: true });var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-}();var _reactNative = require(183           );var _Animation2 = require(511          );var _Animation3 = _interopRequireDefault(_Animation2);function _interopRequireDefault(obj) { // 511 = ./Animation // 183 = react-native
-  return obj && obj.__esModule ? obj : { default: obj };
-}function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
-}function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}var SlideAnimation = function (_Animation) {
-  _inherits(SlideAnimation, _Animation);function SlideAnimation() {
-    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        _ref$toValue = _ref.toValue,
-        toValue = _ref$toValue === undefined ? 0 : _ref$toValue,
-        _ref$slideFrom = _ref.slideFrom,
-        slideFrom = _ref$slideFrom === undefined ? 'bottom' : _ref$slideFrom,
-        _ref$useNativeDriver = _ref.useNativeDriver,
-        useNativeDriver = _ref$useNativeDriver === undefined ? true : _ref$useNativeDriver;_classCallCheck(this, SlideAnimation);var _this = _possibleConstructorReturn(this, (SlideAnimation.__proto__ || Object.getPrototypeOf(SlideAnimation)).call(this, { toValue: toValue, useNativeDriver: useNativeDriver }));_this.animations = _this.createAnimations(slideFrom);return _this;
-  }_createClass(SlideAnimation, [{ key: 'toValue', value: function toValue(_toValue) {
-      var onFinished = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};_reactNative.Animated.spring(this.animate, { toValue: _toValue, velocity: 0, tension: 65, friction: 10, useNativeDriver: this.useNativeDriver }).start(onFinished);
-    } }, { key: 'createAnimations', value: function createAnimations(slideFrom) {
-      var transform = [];if (['top', 'bottom'].includes(slideFrom)) {
-        if (slideFrom === 'bottom') {
-          transform.push({ translateY: this.animate.interpolate({ inputRange: [0, 1], outputRange: [800, 1] }) });
-        } else {
-          transform.push({ translateY: this.animate.interpolate({ inputRange: [0, 1], outputRange: [-800, 1] }) });
-        }
-      } else if (['left', 'right'].includes(slideFrom)) {
-        if (slideFrom === 'right') {
-          transform.push({ translateX: this.animate.interpolate({ inputRange: [0, 1], outputRange: [800, 1] }) });
-        } else {
-          transform.push({ translateX: this.animate.interpolate({ inputRange: [0, 1], outputRange: [-800, 1] }) });
-        }
-      }var animations = { transform: transform };return animations;
-    } }]);return SlideAnimation;
-}(_Animation3.default);exports.default = SlideAnimation;
-}, 513, null, "react-native-popup-dialog/dist/animations/SlideAnimation.js");
-__d(/* react-native-popup-dialog/dist/components/DialogTitle.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", { value: true });var _jsxFileName = 'src/components/DialogTitle.js';var _react = require(12     );var _react2 = _interopRequireDefault(_react);var _reactNative = require(183           );var _Constants = require(505                     );function _interopRequireDefault(obj) { // 505 = ../constants/Constants // 183 = react-native // 12 = react
-  return obj && obj.__esModule ? obj : { default: obj };
-}var babelPluginFlowReactPropTypes_proptype_DialogTitleProps = require(503      ).babelPluginFlowReactPropTypes_proptype_DialogTitleProps || require(19          ).any;var isAndroid = _reactNative.Platform.OS === 'android';var styles = _reactNative.StyleSheet.create({ title: { padding: 24, paddingLeft: 18, paddingRight: 18, borderTopLeftRadius: 8, borderTopRightRadius: 8 }, titleBar: { padding: 14, borderBottomWidth: 0.5, backgroundColor: '#F9F9FB', borderColor: '#DAD9DC' }, text: { fontWeight: isAndroid ? '400' : '500', fontFamily: isAndroid ? 'sans-serif-medium' : 'System', fontSize: isAndroid ? 19 : 15, color: '#151822' } });function DialogTitle(_ref) { // 19 = prop-types // 503 = ../type
-  var title = _ref.title,
-      style = _ref.style,
-      textStyle = _ref.textStyle,
-      hasTitleBar = _ref.hasTitleBar,
-      align = _ref.align;var titleBar = hasTitleBar ? styles.titleBar : null;var titleAlign = { alignItems: _Constants.Positions[align] };return _react2.default.createElement(_reactNative.View, { style: [styles.title, titleAlign, titleBar, style], __source: { fileName: _jsxFileName, lineNumber: 43 } }, _react2.default.createElement(_reactNative.Text, { style: [styles.text, textStyle], __source: { fileName: _jsxFileName, lineNumber: 44 } }, title));
-}DialogTitle.propTypes = babelPluginFlowReactPropTypes_proptype_DialogTitleProps === require(19          ).any ? {} : babelPluginFlowReactPropTypes_proptype_DialogTitleProps;DialogTitle.defaultProps = { align: 'center', style: null, textStyle: null, hasTitleBar: true };exports.default = DialogTitle; // 19 = prop-types
-}, 514, null, "react-native-popup-dialog/dist/components/DialogTitle.js");
-__d(/* react-native-popup-dialog/dist/components/DialogFooter.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", { value: true });var _jsxFileName = 'src/components/DialogFooter.js';var _react = require(12     );var _react2 = _interopRequireDefault(_react);var _reactNative = require(183           );function _interopRequireDefault(obj) { // 183 = react-native // 12 = react
-  return obj && obj.__esModule ? obj : { default: obj };
-}var babelPluginFlowReactPropTypes_proptype_DialogFooterProps = require(503      ).babelPluginFlowReactPropTypes_proptype_DialogFooterProps || require(19          ).any;var styles = _reactNative.StyleSheet.create({ border: { borderColor: '#CCD0D5', borderTopWidth: 0.2 }, actionsVertical: { height: 200, flexDirection: 'column' }, actionsHorizontal: { flexDirection: 'row' } });function DialogActionList(_ref) { // 19 = prop-types // 503 = ../type
-  var style = _ref.style,
-      bordered = _ref.bordered,
-      children = _ref.children;var containerStyle = children.length > 2 ? styles.actionsVertical : styles.actionsHorizontal;var border = bordered ? styles.border : null;var content = children.length === 2 ? _react.Children.map(children, function (child, index) {
-    return (0, _react.cloneElement)(child, { bordered: 1 % index === 0 && bordered });
-  }) : children;return _react2.default.createElement(_reactNative.View, { style: [containerStyle, border, style], __source: { fileName: _jsxFileName, lineNumber: 42 } }, content);
-}DialogActionList.propTypes = babelPluginFlowReactPropTypes_proptype_DialogFooterProps === require(19          ).any ? {} : babelPluginFlowReactPropTypes_proptype_DialogFooterProps;DialogActionList.defaultProps = { style: null, bordered: true };exports.default = DialogActionList; // 19 = prop-types
-}, 515, null, "react-native-popup-dialog/dist/components/DialogFooter.js");
-__d(/* react-native-popup-dialog/dist/components/DialogContent.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", { value: true });var _jsxFileName = 'src/components/DialogContent.js';var _react = require(12     );var _react2 = _interopRequireDefault(_react);var _reactNative = require(183           );function _interopRequireDefault(obj) { // 183 = react-native // 12 = react
-  return obj && obj.__esModule ? obj : { default: obj };
-}var babelPluginFlowReactPropTypes_proptype_DialogContentProps = require(503      ).babelPluginFlowReactPropTypes_proptype_DialogContentProps || require(19          ).any;var styles = _reactNative.StyleSheet.create({ content: { paddingLeft: 18, paddingRight: 18, paddingBottom: 24 } });function DialogContent(_ref) { // 19 = prop-types // 503 = ../type
-  var style = _ref.style,
-      children = _ref.children;return _react2.default.createElement(_reactNative.View, { style: [styles.content, style], __source: { fileName: _jsxFileName, lineNumber: 17 } }, children);
-}DialogContent.propTypes = babelPluginFlowReactPropTypes_proptype_DialogContentProps === require(19          ).any ? {} : babelPluginFlowReactPropTypes_proptype_DialogContentProps;DialogContent.defaultProps = { style: null };exports.default = DialogContent; // 19 = prop-types
-}, 516, null, "react-native-popup-dialog/dist/components/DialogContent.js");
 __d(/* RootTipsDemo/src/loading.gif */function(global, require, module, exports) {module.exports=require(327                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/src","width":32,"height":32,"scales":[1],"hash":"667696a0c46251697b2096e3588e4d08","name":"loading","type":"gif"}); // 327 = react-native/Libraries/Image/AssetRegistry
 }, 501, null, "RootTipsDemo/src/loading.gif");
 ;require(211);
