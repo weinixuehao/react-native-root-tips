@@ -5,7 +5,7 @@
   "main": "./index.js",
   "dependencies": {
     "prop-types": "^15.5.10",
-    "react-native-root-siblings": "^2.2.0"
+    "react-native-root-siblings": "^3.1.7"
   },
   "repository" :
   { "type" : "git"
